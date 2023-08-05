@@ -1,4 +1,6 @@
-package by.maven.firstmodule;
+package by.pvt.core.multi.repository;
+
+import by.pvt.core.multi.domain.User;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -7,9 +9,7 @@ import java.util.stream.Stream;
 
 public class UserRepository implements IUsers {
 
-    public String pathBase = "D:\\Project Java\\FirstModule\\src\\main\\resources\\base.txt";
-
-    //public String pathBase = "D:\\Development Programs\\JavaProject\\base.txt";
+    public String pathBase = "D:\\Project Java\\base.txt";
 
     // Добавляет и сохраняет пользователей в файл
     @Override
@@ -18,17 +18,23 @@ public class UserRepository implements IUsers {
         try {
             FileOutputStream FOS = new FileOutputStream(base, true);
             ObjectOutputStream OOS = new ObjectOutputStream(FOS);
-            ArrayList<User> users = new ArrayList<>(user);
+            List<User> users = new ArrayList<>(user);
+            List <User> saveUsers = new ArrayList<>();
             for (User usr : users) {
                 if (!searchLoginUser(usr.getLogin())) {
-                OOS.writeObject(usr);
-                System.out.println("Пользователь добавлен: " + usr);
+                    saveUsers.add(usr);
+                    System.out.println("Пользователь добавлен: " + usr);
                 } else {
                     System.out.println("Такой пользователь уже есть: " + usr);
                 }
             }
-            OOS.flush();
-            OOS.close();
+
+            if (saveUsers.size() > 0) {
+                OOS.writeObject(user);
+                OOS.flush();
+                OOS.close();
+            }
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -38,18 +44,17 @@ public class UserRepository implements IUsers {
         File base = new File(pathBase);
         List<User> users = new ArrayList<>();
         try (ObjectInputStream OIS = new ObjectInputStream(new FileInputStream(base))) {
-            while (true) users.add((User) OIS.readObject());
+            users = (List<User>) OIS.readObject();
         } catch (IOException | ClassNotFoundException ex) {
         }
         return users;
     }
 
-    //Проверка пользователя в файле
-    public boolean searchObjectUserinFile(User user) {
+    //Проверка пользователя в файле (Private)
+    private boolean searchObjectUserinFile(User user) {
         List<User> allUser = getAllUsers();
         Stream<User> stream = allUser.stream();
-        return stream.anyMatch(x-> x.getLogin().equals(user.getLogin()));
-
+        return stream.anyMatch(x -> x.getLogin().equals(user.getLogin()));
     }
 
     //Поиск пользователя по ID с возвратом объекта User
@@ -78,7 +83,9 @@ public class UserRepository implements IUsers {
 
     @Override
     public void deleteUser(User user) {
-        if (!pathBase.isEmpty()) ;
+        if (pathBase.isEmpty()) {
+            return;
+        }
         List<User> searchUser = getAllUsers();
         List<User> newList = new ArrayList<>();
         for (User u : searchUser) {
@@ -93,7 +100,6 @@ public class UserRepository implements IUsers {
             e.printStackTrace();
         }
         addUser(newList);
-
     }
 }
 
