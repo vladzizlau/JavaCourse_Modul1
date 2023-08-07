@@ -16,15 +16,14 @@ public class User implements Serializable {
     private String role;
 
 
-    public User(Long Id, String Login, String fName, String sName, String phone, String email, String adress, String pass, String Role) {
+    public User(Long Id, String Login, String fName, String sName, String phone, String email, String pass, String Role) {
         this.id = Id;
         this.login = Login;
         this.firstName = fName;
         this.surName = sName;
-        this.fullName = fName + " " + sName;
+        this.fullName = fName + sName;
         this.phoneNumber = phone;
         this.email = email;
-        this.adress = adress;
         this.password = pass;
         this.role = Role;
     }
@@ -37,7 +36,7 @@ public class User implements Serializable {
     public String getLogin(){return login;}
     public String getFirstName(){return firstName;}
     public String getSurName(){return surName;}
-    public String getFullName(){return fullName;}
+    public String getFullName(){return firstName + " " + surName;}
     public String  getPhoneNumber(){return phoneNumber;}
     public String getEmail(){return email;}
     public String getAdress(){return adress;}
@@ -48,7 +47,6 @@ public class User implements Serializable {
     public void setLogin(String log){this.login = log;}
     public void setFirstName(String fname){this.firstName = fname;}
     public void setSurName(String sname){this.surName = sname;}
-    public void setFullName(String fname) {this.fullName = fname;}
     public void setPhoneNumber(String number){this.phoneNumber = number;}
     public void setEmail(String email){this.email = email;}
     public void setAdress(String adress) {this.adress = adress;}

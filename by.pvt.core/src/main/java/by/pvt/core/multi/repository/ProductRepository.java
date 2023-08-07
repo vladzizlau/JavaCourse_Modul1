@@ -14,7 +14,7 @@ public class ProductRepository implements IProduct {
 
     // Сохраняет товар в файл
     @Override
-    public void addProd(List<Product> products) {
+    public void addProd(List<Product> products) throws IOException{
         File base = new File(pathBase);
         try {
             FileOutputStream FOS = new FileOutputStream(base, true);
@@ -36,7 +36,7 @@ public class ProductRepository implements IProduct {
                 OOS.close();
             }
 
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -71,7 +71,7 @@ public class ProductRepository implements IProduct {
     }
 
     @Override
-    public void deleteProduct(Product prod) {
+    public void deleteProduct(Product prod) throws IOException {
         if (pathBase.isEmpty()) {
             return;
         }

@@ -6,19 +6,19 @@
          version="6.0"
          metadata-complete="true">
 
-    <display-name>Servlet test</display-name>
+    <display-name>Store</display-name>
     <description>
-        First servlet
+        Online store
     </description>
 
     <servlet>
-        <servlet-name>firstservlet</servlet-name>
+        <servlet-name>onlinestore</servlet-name>
         <servlet-class>by.pvt.core.multi.controller.Controller</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>firstservlet</servlet-name>
-        <url-pattern>/firstservlet</url-pattern>
+        <servlet-name>onlinestore</servlet-name>
+        <url-pattern>/store</url-pattern>
     </servlet-mapping>
 
 </web-app>

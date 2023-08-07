@@ -6,11 +6,13 @@ public class UserResponse {
     private String surName;
     private String full_name;
     private String login;
+    private String email;
     private String role;
 
     public UserResponse(){}
-    public UserResponse (long Id, String firstname, String surname, String fullname, String login, String role){
-        this.id = Id; this.firstName = firstname; this.surName = surname; this.full_name = fullname; this.login = login; this.role = role;
+    public UserResponse (long Id, String firstname, String surname, String fullname, String login, String eMail, String role){
+        this.id = Id; this.firstName = firstname; this.surName = surname;
+        this.full_name = fullname; this.login = login; this.role = role;this.email = eMail;
     }
 
     public void setId(Long iD) {this.id = iD;}
@@ -18,6 +20,7 @@ public class UserResponse {
     public void setSurName(String sname){this.surName = sname;}
     public void setFull_name(String fullname){this.full_name = fullname;}
     public void setLogin(String logIn){this.login = logIn;}
+    public void setEmail(String eMail){this.email = eMail;}
     public void setRole(String r){this.role = r;}
 
     public long getId(){return this.id;}
