@@ -13,7 +13,7 @@ public class TestAll {
         UserRepository userRepository = ApplicationContext.getInstance().getUserRepository();
         ProductRepository productRepository = ApplicationContext.getInstance().getProductRepository();
 
-        ArrayList<User> users = new ArrayList<>();
+//        ArrayList<User> users = new ArrayList<>();
 //        User user1 = new User(1L, "FirstUser","qwe", "werq", "375296323200", "wqe@tyty.ru", "Gomel, street Lygnikova 17\78", "123", "Admin");
 //        User user2 = new User(2L, "SecondUser","zxc", "cvnm","375176987878", "sobakanasene@sobaka.ru", "BLR, Minsk", "789", "Client");
 //        User user3 = new User(3L, "ThirdUSer","qer", "cbvc", "375256664422", "zxc@ya.ru", "Blr, Mogilev", "646", "Moderator");
@@ -34,7 +34,7 @@ public class TestAll {
         //Методы проверки UserRepository
 
 //        userRepository.addUser(users); //Добавляет пользователей в файл
-        for(var i:userRepository.getAllUsers()){ System.out.println("Загрузка пользователя из файла: " +i.getPassword());} System.out.println(userRepository.getNewIndex());
+//        for(var i:userRepository.getAllUsers()){ System.out.println("Загрузка пользователя из файла: " +i.getPassword());} System.out.println(userRepository.getNewIndex());
 //        System.out.println("Проверка наличия пользователя в файле: " + userRepository.searchObjectUserinFile(user2));
 //        System.out.println("Проверка существования пользователя с таким логином: " + userRepository.searchLoginUser("SecondUser"));
 //        System.out.println("Поиск пользователя по ID: " + userRepository.searchUser(user2.getId()));
