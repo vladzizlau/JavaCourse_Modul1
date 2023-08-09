@@ -1,11 +1,13 @@
-package by.maven.firstmodule;
+package by.pvt.core.multi.repository;
 
-import java.io.FileNotFoundException;
+import by.pvt.core.multi.domain.Product;
+import by.pvt.core.multi.domain.User;
+
 import java.util.List;
 
 public interface IUsers
     {
-        void addUser(List<User> user);
+        abstract void addUser(List<User> user);
         abstract User searchUser(Long id);
         abstract List<User> getAllUsers();
         abstract void deleteUser(User user);
