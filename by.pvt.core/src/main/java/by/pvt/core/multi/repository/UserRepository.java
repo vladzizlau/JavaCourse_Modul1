@@ -71,20 +71,25 @@ public class UserRepository implements IUsers
         return users;
         }
 //Достаем из базы пользователя (с предварительной проверкой логина и пароля)
-        public User getUser(String login, String pass) throws NullPointerException
+        public User getUser(String login, String pass)throws NullPointerException
         {
 
                 List<User> searchUser = getAllUsers();
                 User rUser = null;
             try {
                 for (User u : searchUser) {
-                    if (u.getLogin().equals(login) && u.getPassword().equals(pass))
+                    if (u.getLogin().equals(login) && u.getPassword().equals(pass)) {
                         rUser = searchUser.get(searchUser.indexOf(u));
-                    else {System.out.println("Неверно введен логин или пароль! ");}
+                        return rUser;
+                    }
+                    else {System.out.println("Неверно введен логин или пароль!"); break;}
                 }
             }
-            catch (NullPointerException e) { System.out.println(e);}
-            return rUser;
+            catch (NullPointerException e) {
+                System.out.println(e);
+
+            }
+            return null;
         }
 
     //Проверка пользователя в файле (Private)

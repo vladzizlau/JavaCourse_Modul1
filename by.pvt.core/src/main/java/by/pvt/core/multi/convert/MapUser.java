@@ -27,6 +27,7 @@ public class MapUser {
         ur.setFirstName(user.getFirstName());
         ur.setSurName(user.getSurName());
         ur.setFull_name(user.getFullName());
+        ur.setPhone(user.getPhoneNumber());
         ur.setRole(user.getRole());
         return ur;
     }

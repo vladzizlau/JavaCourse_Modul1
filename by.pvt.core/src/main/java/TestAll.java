@@ -39,9 +39,20 @@ public class TestAll {
 //        System.out.println("Проверка существования пользователя с таким логином: " + userRepository.searchLoginUser("SecondUser"));
 //        System.out.println("Поиск пользователя по ID: " + userRepository.searchUser(user2.getId()));
 //        userRepository.deleteUser(user2); // Удаление объекта User из файла и перезапись по новой
-        System.out.println(userRepository.getUser("qwe", "12345").getFullName());
-        System.out.println(userRepository.getUser("qwerty", "1111").getFullName());
+//        System.out.println(userRepository.getUser("qwe", "12345").getFullName());
+//        System.out.println(userRepository.getUser("qwerty", "1111").getFullName());
+       try {
 
+
+           String c = "";
+          // long d = Long.parseLong(c);
+           if(c != "")
+           System.out.println("cccc");
+       }
+       catch (NumberFormatException e)
+       {
+           System.out.println(e.getMessage());
+       }
 
 
         //Методы проверки ProductRepository

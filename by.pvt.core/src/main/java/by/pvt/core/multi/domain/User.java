@@ -9,14 +9,14 @@ public class User implements Serializable {
     private String firstName;
     private String surName;
     private String fullName;
-    private String phoneNumber;
+    private long phoneNumber;
     private String email;
     private String adress;
     private String password;
     private String role;
 
 
-    public User(Long Id, String Login, String fName, String sName, String phone, String email, String pass, String Role) {
+    public User(Long Id, String Login, String fName, String sName, long phone, String email, String pass, String Role) {
         this.id = Id;
         this.login = Login;
         this.firstName = fName;
@@ -32,12 +32,13 @@ public class User implements Serializable {
 
     }
 
-    public Long getId(){return id;}
+
+    public Long getId(){return id; }
     public String getLogin(){return login;}
     public String getFirstName(){return firstName;}
     public String getSurName(){return surName;}
     public String getFullName(){return firstName + " " + surName;}
-    public String  getPhoneNumber(){return phoneNumber;}
+    public long  getPhoneNumber(){return phoneNumber;}
     public String getEmail(){return email;}
     public String getAdress(){return adress;}
     public String getPassword(){return password;}
@@ -47,7 +48,7 @@ public class User implements Serializable {
     public void setLogin(String log){this.login = log;}
     public void setFirstName(String fname){this.firstName = fname;}
     public void setSurName(String sname){this.surName = sname;}
-    public void setPhoneNumber(String number){this.phoneNumber = number;}
+    public void setPhoneNumber(long number){this.phoneNumber = number;}
     public void setEmail(String email){this.email = email;}
     public void setAdress(String adress) {this.adress = adress;}
     public void setPassword(String pass) {this.password = pass;}
