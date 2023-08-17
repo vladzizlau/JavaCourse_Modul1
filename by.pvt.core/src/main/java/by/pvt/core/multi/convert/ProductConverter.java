@@ -4,7 +4,8 @@ import by.pvt.api.dto.ProductRequest;
 import by.pvt.api.dto.ProductResponse;
 import by.pvt.core.multi.domain.Product;
 
-public class MapProduct {
+public class ProductConverter
+    {
     //из объекта в сущность
     public Product productToDTO(ProductRequest productR) {
         Product pp = new Product();

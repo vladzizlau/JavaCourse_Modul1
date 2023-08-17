@@ -4,7 +4,8 @@ import by.pvt.api.dto.UserRequest;
 import by.pvt.api.dto.UserResponse;
 import by.pvt.core.multi.domain.User;
 
-public class MapUser {
+public class UserConverter
+    {
 //из объекта в сущность
     public User userToEntity(UserRequest req)
     {

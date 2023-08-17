@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface IUsers
     {
-        abstract void addUser(List<User> user);
-        abstract User searchUser(Long id);
-        abstract List<User> getAllUsers();
-        abstract void deleteUser(User user);
+         void addUser(List<User> user);
+         User searchUser(Long id);
+         List<User> getAllUsers();
+         void deleteUser(User user);
     }
 
 

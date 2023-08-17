@@ -6,8 +6,11 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IProduct {
-    abstract void addProd(List<Product> products) throws IOException;
-    abstract List<Product> getAllProduct();
-    abstract Product searchProduct(int id);
-    abstract void deleteProduct(Product prod) throws IOException;
+
+     // Сохраняет товар в файл
+     void addProd(List<Product> products);
+
+     List<Product> getAllProduct();
+
+
 }

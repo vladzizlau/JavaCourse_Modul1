@@ -40,7 +40,7 @@
 <div id="wb_Text4" style="position:absolute;left:175px;top:34px;width:112px;height:19px;z-index:9;">
 <span style="color:#000000;font-family:Arial;font-size:21px;">Авторизация</span></div>
 <input type="submit" id="Button2" name="" value="Войти" style="position:absolute;left:169px;top:167px;width:124px;height:33px;z-index:10;">
-<a href="errors/login.jsp">Lololo</href>
+
 <div id="wb_Text5" style="position:absolute;left:188px;top:220px;width:82px;height:15px;z-index:11;" onclick="window.location.href='./register.jsp';return false;">
 <a href=""><span style="color:#000000;font-family:'Times New Roman';font-size:17px;">Регистрация</span></a></div>
 </form>

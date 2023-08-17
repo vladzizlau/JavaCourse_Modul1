@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 public class UserRepository implements IUsers
     {
 
-        public String pathBase = "D:\\Project Java\\base.txt";
-    //public String pathBase = "D:\\Development Programs\\JavaProject\\base.txt";
+//        public String pathBase = "D:\\Project Java\\base.txt";
+    public String pathBase = "D:\\Development Programs\\JavaProject\\base.txt";
 
     // Добавляет и сохраняет пользователей в файл
     @Override
@@ -24,23 +24,14 @@ public class UserRepository implements IUsers
             List<User> saveUsers = new ArrayList<>();
             for (User usr : user)
                 {
-                if (!searchLoginUser(usr.getLogin()))
-                    {
                     usr.setId(getNewIndex());
-                        usr.setRole("Client"); //Пока по умолчанию так, дальше надо сделать реализацию прав
+                    usr.setRole("Client"); //Пока по умолчанию так, дальше надо сделать реализацию прав
                     saveUsers.add(usr);
-
-                    System.out.println("Пользователь добавлен: " + usr);
-                    }
-                else
-                    {
-                    System.out.println("Такой пользователь уже есть: " + usr);
-                    }
                 }
 
             if (saveUsers.size() > 0)
                 {
-                OOS.writeObject(user);
+                OOS.writeObject(saveUsers);
                 OOS.flush();
                 OOS.close();
                 }
@@ -51,45 +42,21 @@ public class UserRepository implements IUsers
             }
         }
 
-    public long getNewIndex() //private
+    private long getNewIndex() //private
         {
             Date date = new Date();
             return date.getTime();
         }
 
 
-    public List<User> getAllUsers()
-        {
+    public List<User> getAllUsers(){
         File base = new File(pathBase);
         List<User> users = new ArrayList<>();
         try (ObjectInputStream OIS = new ObjectInputStream(new FileInputStream(base)))
             {
             users = (List<User>) OIS.readObject();
-            } catch (IOException | ClassNotFoundException ex)
-            {
-            }
+            } catch (IOException | ClassNotFoundException ex) { }
         return users;
-        }
-//Достаем из базы пользователя (с предварительной проверкой логина и пароля)
-        public User getUser(String login, String pass)throws NullPointerException
-        {
-
-                List<User> searchUser = getAllUsers();
-                User rUser = null;
-            try {
-                for (User u : searchUser) {
-                    if (u.getLogin().equals(login) && u.getPassword().equals(pass)) {
-                        rUser = searchUser.get(searchUser.indexOf(u));
-                        return rUser;
-                    }
-                    else {System.out.println("Неверно введен логин или пароль!"); break;}
-                }
-            }
-            catch (NullPointerException e) {
-                System.out.println(e);
-
-            }
-            return null;
         }
 
     //Проверка пользователя в файле (Private)
@@ -128,7 +95,23 @@ public class UserRepository implements IUsers
             }
         return returnable;
         }
+    //Достаем из базы пользователя
+    public User getUser(String login)
+        {
+        User rUser;
+        List <User> listUser = getAllUsers();
 
+        for (User u : listUser)
+            {
+            if (u.getLogin().equals(login))
+                {
+                rUser = listUser.get(listUser.indexOf(u));
+                return rUser;
+                }
+            else {System.out.println("Такой пользователь не найден!");}
+            }
+        return null;
+        }
     @Override
     public void deleteUser(User user)
         {
