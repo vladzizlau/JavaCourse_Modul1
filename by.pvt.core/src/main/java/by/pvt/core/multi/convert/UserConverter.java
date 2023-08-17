@@ -10,12 +10,14 @@ public class UserConverter
     public User userToEntity(UserRequest req)
     {
         User user = new User();
+        user.setId(req.getId());
         user.setLogin(req.getLogin());
         user.setPassword(req.getPassword());
         user.setFirstName(req.getFirstName());
         user.setSurName(req.getSurName());
         user.setEmail(req.getEmail());
         user.setPhoneNumber(req.getPhone());
+        user.setRole((req.getRole()));
 
         return user;
     }

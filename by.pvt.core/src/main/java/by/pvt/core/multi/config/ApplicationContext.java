@@ -49,8 +49,8 @@ public class ApplicationContext {
         return applicationContext;
     }
 public Controller getController(){return controller;}
-    public ProductConverter getMapProduct() {return productConverter;}
-    public UserConverter getMapUser() {return userConverter;}
+    public ProductConverter getProductConverter() {return productConverter;}
+    public UserConverter getUserConverter() {return userConverter;}
     public ProductRequest getProductRequest() {return productRequest;}
     public ProductResponse getProductResponse(){return productResponse;}
     public UserRequest getUserRequest() {return userRequest;}
@@ -59,4 +59,5 @@ public Controller getController(){return controller;}
     public ProductRepository getProductRepository() {return productRepository;}
     public UserService getUserService(){return userService;}
     public ProductService getProductService(){return productService;}
+
 }

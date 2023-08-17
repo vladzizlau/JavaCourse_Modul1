@@ -15,12 +15,12 @@ public class ProductRepository implements IProduct {
     @Override
     public void addProd(List<Product> products)  {
             File base = new File(pathBase);
-        List<Product> prod = new ArrayList<>();
             try {
-                FileOutputStream FOS = new FileOutputStream(base);
+                FileOutputStream FOS = new FileOutputStream(base, true);
                 ObjectOutputStream OOS = new ObjectOutputStream(FOS);
                     OOS.writeObject(products);
                     OOS.close();
+                    FOS.close();
             } catch (IOException e) {
                 System.out.println("addProd: " + e.getMessage());
             }
@@ -34,6 +34,7 @@ public class ProductRepository implements IProduct {
         {
             products = (List<Product>) OIS.readObject();
         }
+
         catch (IOException | ClassNotFoundException e) { }
         return products;
     }

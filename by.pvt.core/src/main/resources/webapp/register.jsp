@@ -27,14 +27,16 @@
 <span style="color:#000000;font-family:Arial;font-size:16px;">Site created special for Java course Enterprise Edition</span></div>
 
 <div id="wb_Form1" style="position:absolute;left:269px;top:112px;width:462px;height:399px;z-index:20;">
-<form name="Form1" method="post" action="./store" enctype="application/x-www-form-urlencoded" id="Form1">
+<form name="Form1" method="post" action="./store" enc-type="application/x-www-form-urlencoded" id="Form1">
 <input type="hidden" name="link" value="Register.jsp">
 <div id="wb_Text6" style="position:absolute;left:180px;top:17px;width:102px;height:19px;z-index:5;">
 <span style="color:#000000;font-family:Arial;font-size:21px;">Регистрация</span></div>
 <input type="text" id="loginlabel" style="position:absolute;left:134px;top:53px;width:214px;height:24px;z-index:6;" name="LoginLabel" value="" spellcheck="false">
 <input type="password" id="passlabel" style="position:absolute;left:134px;top:89px;width:214px;height:24px;z-index:7;" name="PassLabel" value="" spellcheck="false">
+<input type="text" id="surnamelabel" style="position:absolute;left:134px;top:251px;width:214px;height:24px;z-index:14;" name="surnameLabel" value="" spellcheck="false">
 <input type="email" id="emaillable" style="position:absolute;left:134px;top:126px;width:214px;height:24px;z-index:8;" name="emaillable" value="" spellcheck="false">
 <input type="text" id="namelabel" style="position:absolute;left:134px;top:217px;width:214px;height:24px;z-index:9;" name="nameLabel" value="" spellcheck="false">
+<input type="phone" id="phonelabel" style="position:absolute;left:134px;top:282px;width:214px;height:24px;z-index:8;" name="phonelabel" value="" spellcheck="false">
 <div id="wb_Text2" style="position:absolute;left:85px;top:56px;width:40px;height:14px;z-index:10;">
 <span style="color:#000000;font-family:Arial;font-size:15px;">Логин:</span></div>
 <div id="wb_Text3" style="position:absolute;left:75px;top:90px;width:54px;height:14px;z-index:11;">
@@ -47,8 +49,8 @@
 <span style="color:#000000;font-family:Arial;font-size:15px;">Фамилия:</span></div>
 <div id="wb_Text8" style="position:absolute;left:60px;top:285px;width:50px;height:15px;z-index:17;">
 <span style="color:#000000;font-family:Arial;font-size:16px;">Телефон:</span></div>
-<input type="text" id="surnamelabel" style="position:absolute;left:134px;top:251px;width:214px;height:24px;z-index:14;" name="surnameLabel" value="" spellcheck="false">
-<input type="text" id="phonelabel" style="position:absolute;left:134px;top:285px;width:214px;height:24px;z-index:15;" name="phonelabel" value="" spellcheck="false">
+
+
 
 <input type="submit" id="register" name="" value="Регистрация" style="position:absolute;left:172px;top:320px;width:148px;height:41px;z-index:18;">
 </form>

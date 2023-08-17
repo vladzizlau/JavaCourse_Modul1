@@ -29,9 +29,6 @@ public class ProductService implements IProductService
                 }
 
                     productRepository.addProd(allprod);
-
-
-
         }
 
     public List<String> loadGroups(){ //получает группы товаров для создания категорий

@@ -17,30 +17,30 @@ public class TestAll {
         ProductRepository productRepository = ApplicationContext.getInstance().getProductRepository();
 
         ArrayList<User> users = new ArrayList<>();
-//        User user1 = new User(1L, "FirstUser","qwe", "werq", "375296323200", "wqe@tyty.ru", "Gomel, street Lygnikova 17\78", "123", "Admin");
-//        User user2 = new User(2L, "SecondUser","zxc", "cvnm","375176987878", "sobakanasene@sobaka.ru", "BLR, Minsk", "789", "Client");
-//        User user3 = new User(3L, "ThirdUSer","qer", "cbvc", "375256664422", "zxc@ya.ru", "Blr, Mogilev", "646", "Moderator");
-//        users.add(user1);
-//        users.add(user2);
-//        users.add(user3);
+        User user1 = new User(System.currentTimeMillis(), "FirstUser","qwe", "werq",  37529632, "wqe@tyty.ru",  "123", "Admin");
+        User user2 = new User(System.currentTimeMillis(), "SecondUser","zxc", "cvnm",324536563, "sobakanasene@sobaka.ru", "789", "Client");
+        User user3 = new User(System.currentTimeMillis(), "ThirdUSer","qer", "cbvc", 656565635, "zxc@ya.ru", "646", "Moderator");
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
 
-        List<Product> prods = new ArrayList<>();
-        Product prod1 = new Product(getNewIndex() +1,"Vegetables", "Cucumber", 100, 4.99);
-        Product prod2 = new Product(getNewIndex()+ 2,"Vegetables", "Tomato", 130, 5.99);
-        Product prod3 = new Product(getNewIndex()- 2, "Fruits", "Apple (belarus)", 246, 1.99);
-        Product prod4 = new Product(getNewIndex()- 1, "Fruits", "Bananas", 589, 4.50);
-
-            prods.add(prod1);
-            prods.add(prod2);
-            prods.add(prod3);
-            prods.add(prod4);
+//        List<Product> prods = new ArrayList<>();
+//        Product prod1 = new Product(System.currentTimeMillis(),"Vegetables", "Cucumber", 100, 4.99);
+//        Product prod2 = new Product(System.currentTimeMillis(),"Vegetables", "Tomato", 130, 5.99);
+//        Product prod3 = new Product(System.currentTimeMillis(), "Fruits", "Apple (belarus)", 246, 1.99);
+//        Product prod4 = new Product(System.currentTimeMillis(), "Fruits", "Bananas", 589, 4.50);
+//
+//            prods.add(prod1);
+//            prods.add(prod2);
+//            prods.add(prod3);
+//            prods.add(prod4);
 
 
 
         //Методы проверки UserRepository
 
-//        userRepository.addUser(users); //Добавляет пользователей в файл
-//        for(var i:userRepository.getAllUsers()){ System.out.println("Загрузка пользователя из файла: " +i.getPassword());} System.out.println(userRepository.getNewIndex());
+ //      userRepository.addUser(users); //Добавляет пользователей в файл
+//      for(var i:userRepository.getAllUsers()){System.out.println("Загрузка пользователя из файла:" + i.getLogin());}
 //        System.out.println("Проверка наличия пользователя в файле: " + userRepository.searchObjectUserinFile(user2));
 //        System.out.println("Проверка существования пользователя с таким логином: " + userRepository.searchLoginUser("SecondUser"));
 //        System.out.println("Поиск пользователя по ID: " + userRepository.searchUser(user2.getId()));
@@ -53,7 +53,7 @@ public class TestAll {
 //        Методы проверки ProductRepository
 
 //  productService.addProduct(prods); //Добавляет продукт в файл
-       for(var i:productRepository.getAllProduct()){ System.out.println("Загрузка товара из файла: " +i.getId() + " " +i.getNameProduct());}
+ //      for(var i:productRepository.getAllProduct()){ System.out.println("Загрузка товара из файла: " +i.getId() + " " +i.getNameProduct());}
 
 //        System.out.println("Проверка наличия продукта в файле: " + productRepository.searchProductFile(prod4));
 //        System.out.println("Поиск товара по ID: " + productRepository.searchProduct(prod4.getId()));
@@ -70,11 +70,8 @@ public class TestAll {
 //     productService.editProduct(q.get(1), "TestProd", 123, "Velo", 3.23);
 //        productService.deleteProduct(q.get(0));
 //        q.add("Vegetables");
-        System.out.println(getNewIndex());
+
 
     }
-    public static long getNewIndex(){ //private
 
-        return System.currentTimeMillis();
-    }
 }

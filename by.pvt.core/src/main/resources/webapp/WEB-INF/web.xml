@@ -7,9 +7,6 @@
          metadata-complete="true">
 
     <display-name>Store</display-name>
-    <description>
-        Online store
-    </description>
 
     <servlet>
         <servlet-name>onlinestore</servlet-name>

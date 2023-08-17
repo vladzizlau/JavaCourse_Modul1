@@ -32,7 +32,6 @@ public class User implements Serializable {
 
     }
 
-
     public Long getId(){return id; }
     public String getLogin(){return login;}
     public String getFirstName(){return firstName;}
