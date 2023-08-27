@@ -3,7 +3,7 @@ package by.pvt.core.multi.service.Interface;
 import by.pvt.core.multi.domain.Product;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public interface IProductService
     {

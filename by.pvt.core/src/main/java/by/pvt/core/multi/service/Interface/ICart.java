@@ -10,4 +10,8 @@ public interface ICart {
     ArrayList<ShopCart> getAllCartOrder(long orderid);
 
     ArrayList<ShopCart> getAllCart();
+
+    ArrayList<ShopCart> returnAllCartthisWork(long userID) ;
+
+    double finalCost(long orderid);
 }

@@ -1,9 +1,5 @@
 package by.pvt.core.multi.service;
 
-import by.pvt.api.dto.ShopCartRequest;
-import by.pvt.api.dto.ShopCartResponse;
-import by.pvt.api.dto.UserRequest;
-import by.pvt.api.dto.UserResponse;
 import by.pvt.core.multi.config.ApplicationContext;
 import by.pvt.core.multi.domain.ShopCart;
 import by.pvt.core.multi.service.Interface.ICart;
@@ -43,13 +39,13 @@ public class CartService implements ICart {
     {
         return ApplicationContext.getInstance().getShopRepository().getCartList();
     }
-
+    @Override
 public ArrayList<ShopCart> returnAllCartthisWork(long userID) //Возвращает все товары, добавленные в корзину для текущего пользователя
     {
     long orderID = ApplicationContext.getInstance().getOrderService().searchCurrentOrder(userID);
     return getAllCartOrder(orderID);
     }
-
+    @Override
     public double finalCost (long orderid) { //Получаем полную стоимость заказа
         ArrayList<ShopCart> allShopCart = getAllCartOrder(orderid);
         double cost = allShopCart.stream().mapToDouble(s -> s.getCost()).sum();

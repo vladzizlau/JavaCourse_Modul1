@@ -10,6 +10,8 @@ public interface IOrderService {
 
     long createOrder(long userId);
 
+    void editOrder(long userID, String status);
+
     long searchCurrentOrder(long userID);
 
     ArrayList<Order> getAllUserOrders(long userId);

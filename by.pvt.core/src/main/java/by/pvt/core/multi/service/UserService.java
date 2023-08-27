@@ -65,6 +65,7 @@ public class UserService implements IUserService {
         return rUser;
     }
 
+    @Override
     //Поиск пользователя по логину для проверки на сущестование
     public boolean searchLoginUser(String login) {
        ArrayList<User> searchUser = getAllUsers();
@@ -77,7 +78,7 @@ public class UserService implements IUserService {
         }
         return returnable;
     }
-
+    @Override
     //Достаем из базы пользователя
     public User getUser(String login) {
         User rUser = null;

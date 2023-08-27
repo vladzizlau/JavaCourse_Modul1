@@ -3,14 +3,11 @@ import by.pvt.core.multi.domain.Order;
 import by.pvt.core.multi.domain.Product;
 import by.pvt.core.multi.domain.User;
 import by.pvt.core.multi.repository.OrderRepository;
-import by.pvt.core.multi.repository.ShopRepository;
 import by.pvt.core.multi.repository.UserRepository;
 import by.pvt.core.multi.repository.ProductRepository;
 import by.pvt.core.multi.service.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TestAll {

@@ -14,9 +14,9 @@ public class OrderService implements IOrderService {
     public long order(long userId) //Входная функция по получению id ордера
     {
         long orderid = searchCurrentOrder(userId);
-        if (orderid == -1) {
+        if (orderid == 0) {
             orderid = createOrder(userId);
-        } else if (orderid != -1) {
+        } else if (orderid != 0) {
             return orderid;
         }
         return orderid;
@@ -29,7 +29,7 @@ public class OrderService implements IOrderService {
         ApplicationContext.getInstance().getOrderRepository().addOrder(ord);
         return thisOrderId;
     }
-
+    @Override
     public void editOrder(long userID, String status){ //Присвоение статуса оплачен
         long orderid = searchCurrentOrder(userID);
         double cost = ApplicationContext.getInstance().getCartService().finalCost(orderid);

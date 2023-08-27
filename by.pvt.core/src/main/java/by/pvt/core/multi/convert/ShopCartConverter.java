@@ -1,13 +1,12 @@
 package by.pvt.core.multi.convert;
 
-import by.pvt.api.dto.ProductRequest;
-import by.pvt.api.dto.ProductResponse;
+
 import by.pvt.api.dto.ShopCartRequest;
 import by.pvt.api.dto.ShopCartResponse;
-import by.pvt.core.multi.domain.Product;
+
 import by.pvt.core.multi.domain.ShopCart;
 
-import java.security.cert.Extension;
+
 
 public class ShopCartConverter
     {

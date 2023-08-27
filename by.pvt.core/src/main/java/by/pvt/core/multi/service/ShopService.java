@@ -2,14 +2,14 @@ package by.pvt.core.multi.service;
 
 import by.pvt.api.dto.ShopCartRequest;
 import by.pvt.core.multi.config.ApplicationContext;
-import by.pvt.core.multi.domain.Product;
 import by.pvt.core.multi.domain.ShopCart;
 import by.pvt.core.multi.service.Interface.IShopService;
 
-import java.util.ArrayList;
+
 
 public class ShopService implements IShopService
     {
+        @Override
     public ShopCartRequest setShopCartRequest(long productid, int countProd, long userId)
         {
         long id = ApplicationContext.getInstance().getCartService().getlastIndexCart();
@@ -19,7 +19,7 @@ public class ShopService implements IShopService
         ShopCartRequest request = new ShopCartRequest(id, name, productid, orderID, countProd, cost);
         return request;
         }
-
+        @Override
     public void addCart(ShopCartRequest scr) //В корзину
     {
 
@@ -28,13 +28,13 @@ public class ShopService implements IShopService
     System.out.println("Корзина создана: " + shopCart.getId() + " " + shopCart.getProductId() + " " + shopCart.getCount() + " " + shopCart.getCost() + " " + shopCart.getOrderId());
     }
 
-
-    private double getPriceProduct(long productID)//получаем стоимость товара
+        @Override
+        public double getPriceProduct(long productID)//получаем стоимость товара
         {
         return ApplicationContext.getInstance().getProductService().searchProduct(productID).getPrice();
         }
-
-        private String getNameProduct(long productID) //Получим название товара
+        @Override
+        public String getNameProduct(long productID) //Получим название товара
         {
             return ApplicationContext.getInstance().getProductService().searchProduct(productID).getNameProduct();
         }

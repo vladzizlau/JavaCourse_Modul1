@@ -9,8 +9,8 @@ public interface IUserService
     public void register(UserRequest u);
     public UserResponse auth(String l, String p);
 
-        //Поиск пользователя по ID с возвратом объекта User
         User searchUser(Long id);
-
+        boolean searchLoginUser(String login);
+        User getUser(String login);
         void deleteUser(User user);
     }

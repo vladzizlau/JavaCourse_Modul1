@@ -1,21 +1,12 @@
 package by.pvt.core.multi.controller;
 
-import by.pvt.api.dto.UserRequest;
-import by.pvt.api.dto.UserResponse;
 import by.pvt.core.multi.config.ApplicationContext;
 import by.pvt.core.multi.domain.Product;
-import by.pvt.core.multi.domain.User;
-import by.pvt.core.multi.repository.ProductRepository;
-import by.pvt.core.multi.repository.UserRepository;
-import by.pvt.core.multi.service.ProductService;
-import by.pvt.core.multi.service.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class Controller extends HttpServlet
     {

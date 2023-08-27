@@ -28,8 +28,8 @@ public class ProductRepository implements IProduct {
         }
 
 
+    @Override
     public ArrayList<Product> getAllProduct() {
-        File base = new File(pathBase);
         ArrayList<Product> products = new ArrayList<>();
         try
         {

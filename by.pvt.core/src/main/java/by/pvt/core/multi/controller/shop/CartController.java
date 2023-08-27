@@ -1,16 +1,14 @@
 package by.pvt.core.multi.controller.shop;
 
 import by.pvt.api.dto.ShopCartRequest;
-import by.pvt.api.dto.ShopCartResponse;
 import by.pvt.api.dto.UserResponse;
 import by.pvt.core.multi.config.ApplicationContext;
-import by.pvt.core.multi.domain.ShopCart;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.util.ArrayList;
+
 
 
 // --- Контроллер всей корзины.
