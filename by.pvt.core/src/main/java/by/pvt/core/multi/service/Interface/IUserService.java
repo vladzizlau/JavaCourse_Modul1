@@ -1,4 +1,4 @@
-package by.pvt.core.multi.service;
+package by.pvt.core.multi.service.Interface;
 
 import by.pvt.api.dto.UserRequest;
 import by.pvt.api.dto.UserResponse;

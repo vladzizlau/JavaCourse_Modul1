@@ -1,24 +1,18 @@
 package by.pvt.core.multi.service;
 
+import by.pvt.core.multi.config.ApplicationContext;
 import by.pvt.core.multi.domain.Product;
-import by.pvt.core.multi.repository.ProductRepository;
+import by.pvt.core.multi.service.Interface.IProductService;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 
 public class ProductService implements IProductService
     {
-    ProductRepository productRepository;
-
-    public ProductService(){
-    productRepository = new ProductRepository();
-    }
-
     // Добавление товара
         @Override
-        public void addProduct(List<Product> products) {
-            List<Product> allprod = loadProds();
+        public void addProduct(ArrayList<Product> products) {
+            ArrayList<Product> allprod = loadProds();
                 for (Product product : products) {
                     if (!searchCodeProduct(product.getCodeProduct())) {
                         allprod.add(product);
@@ -27,26 +21,19 @@ public class ProductService implements IProductService
                         System.out.println("Товар с таким кодом уже есть: " + product.getId() + " " + product.getCodeProduct() + " " + product.getNameProduct());
                     }
                 }
-
-                    productRepository.addProd(allprod);
+                    ApplicationContext.getInstance().getProductRepository().addProd(allprod);
         }
 
-    public List<String> loadGroups(){ //получает группы товаров для создания категорий
-    List<String> groups = new ArrayList<>();
-    for (Product io: productRepository.getAllProduct()){
-    if(!groups.contains(io.getType()))
-        groups.add(io.getType());
-    }
-    return groups;
-    }
+
+
     //Получение всех товаров
-    public List<Product> loadProds(){
-        return productRepository.getAllProduct();
+    public ArrayList<Product> loadProds(){
+        return ApplicationContext.getInstance().getProductRepository().getAllProduct();
     }
 @Override
         //Поиск товара по ID с возвратом объекта
         public Product searchProduct(long id) {
-            List<Product> searchProd = loadProds();
+            ArrayList<Product> searchProd = loadProds();
             Product product = null;
             for (Product u : searchProd) {
                 if (u.getId() == id){
@@ -62,7 +49,7 @@ public class ProductService implements IProductService
         //Проверка на наличие товара по коду.  true/false
         @Override
         public Boolean searchCodeProduct(int code) {
-            List<Product> searchProd = productRepository.getAllProduct();
+            ArrayList<Product> searchProd = loadProds();
             for (Product u : searchProd) {
                 if (u.getCodeProduct() == code){
                     return true; }
@@ -76,7 +63,7 @@ public class ProductService implements IProductService
         products.setCodeProduct(code);
         products.setType(type);
         products.setPrice(price);
-            List<Product> allProduct = loadProds();
+            ArrayList<Product> allProduct = loadProds();
             int index = 0;
             for (int i = 0; i < allProduct.size(); i++) {
                 if (allProduct.get(i).getId() == products.getId()) {
@@ -84,15 +71,15 @@ public class ProductService implements IProductService
                 }
             }
             allProduct.set(index, products);
-            productRepository.addProd(allProduct);
+            ApplicationContext.getInstance().getProductRepository().addProd(allProduct);
 
         }
 
 @Override
         public void deleteProduct(Product product) {
-        List<Product> allProduct = loadProds();
+        ArrayList<Product> allProduct = loadProds();
         allProduct.removeIf(s-> s.getId() == product.getId());
-        productRepository.addProd(allProduct);
+        ApplicationContext.getInstance().getProductRepository().addProd(allProduct);
 }
 
     }

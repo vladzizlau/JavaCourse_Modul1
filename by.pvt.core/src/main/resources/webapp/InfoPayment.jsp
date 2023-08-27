@@ -10,6 +10,8 @@
 <link href="style/InfoPayment.css" rel="stylesheet">
 </head>
 <body>
+
+
 <div id="container">
 <a id="Button1" href="./cart.jsp" style="position:absolute;left:900px;top:0px;width:100px;height:29px;z-index:0;">Корзина</a>
 <img src="images/img0002.png" id="Banner1" alt="Online Store" style="border-width:0;position:absolute;left:0px;top:33px;width:1000px;height:70px;z-index:1;" width="1000" height="70">
@@ -20,12 +22,20 @@
 </li>
 <li role="menuitem" class="nav-item"><a class="nav-link" href="./InfoPayment.jsp" target="_self">Оплата</a>
 </li>
-<li role="menuitem" class="nav-item"><a class="nav-link" href="/InfoDelivery.jsp" target="_self">Доставка</a>
+<li role="menuitem" class="nav-item"><a class="nav-link" href="./InfoDelivery.jsp" target="_self">Доставка</a>
 </li>
 </ul>
 </nav>
 <div id="wb_Text1" style="position:absolute;left:335px;top:618px;width:330px;height:15px;z-index:4;">
 <span style="color:#000000;font-family:Arial;font-size:16px;">Site created special for Java course Enterprise Edition</span></div>
+
+<c:set var="userId"><c:out value='${sessionScope["userAuth"].getId()}' /></c:set>
+ <c:if test="${userId != 0}">
+            <script>
+                  document.getElementById('Button2').text = "Кабинет";
+                  document.getElementById('Button2').href = "./client.jsp";
+              </script>
+        </c:if>
 
 <div id="wb_Form1" style="position:absolute;left:0px;top:109px;width:1000px;height:502px;z-index:7;">
 <form name="Form1" method="post" action="mailto:yourname@yourdomain.com" enctype="multipart/form-data" id="Form1">

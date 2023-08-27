@@ -26,7 +26,13 @@
 </nav>
 <div id="wb_Text2" style="position:absolute;left:335px;top:618px;width:330px;height:15px;z-index:4;">
 <span style="color:#000000;font-family:Arial;font-size:16px;">Site created special for Java course Enterprise Edition</span></div>
-
+<c:set var="userId"><c:out value='${sessionScope["userAuth"].getId()}' /></c:set>
+ <c:if test="${userId != 0}">
+            <script>
+                  document.getElementById('Button2').text = "Кабинет";
+                  document.getElementById('Button2').href = "./client.jsp";
+              </script>
+        </c:if>
 <div id="wb_Form1" style="position:absolute;left:0px;top:110px;width:1000px;height:186px;z-index:7;">
 <form name="Form1" method="post" action="mailto:yourname@yourdomain.com" enctype="multipart/form-data" id="Form1">
 <div id="wb_Text1" style="position:absolute;left:17px;top:31px;width:949px;height:125px;z-index:5;">

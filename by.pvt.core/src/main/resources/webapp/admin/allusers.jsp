@@ -230,25 +230,40 @@ margin-bottom: 10px;
 
 <c:set var="count" value="1"></c:set>
 <table id="Table" style="position: relative;border-spacing: 10px;left: 10px;top: 50px;width: 100px;height: 100px;border: 1px solid;" >
-<jsp:useBean id="service" class="by.pvt.core.multi.service.ProductService" scope="page"></jsp:useBean>
-<tr><th>Категория</th><th>Название</th><th>Цена</th><th>Код</th><th>ID</th>
-<c:forEach items="${service.loadProds()}" var="good">
+<jsp:useBean id="service" class="by.pvt.core.multi.service.UserService" scope="page"></jsp:useBean>
+<tr><th>ID</th><th>Логин</th><th>Имя</th><th>Фамилия</th><th>E-mail</th><th>Пароль</th><th>Роль</th>
+<c:forEach items="${service.getAllUsers()}" var="users">
 <div id="wb_Text2" >
 
-<tr><td><c:out value="${good.getType()}"/></td><td><c:out value="${good.getNameProduct()}"/></td><td><c:out value="${good.getPrice()}"/></td><td><c:out value="${good.getCodeProduct()}"/></td><td><c:out value="${good.getId()}"/></td><td><a href="#win${count}" id="<c:out value="${good.getId()}"/>"><img style="height: 20px;" src="../images/editImage.png"></img></a></td>
+<tr><td><c:out value="${users.getId()}"/></td><td><c:out value="${users.getLogin()}"/></td><td><c:out value="${users.getFirstName()}"/></td><td><c:out value="${users.getSurName()}"/></td><td><c:out value="${users.getEmail()}"/></td><td><c:out value="${users.getPassword()}"/></td><td><c:out value="${users.getRole()}"/></td><td><a href="#notRelised${count}" id="<c:out value="${good.getId()}"/>"><img style="height: 20px;" src="../images/editImage.png"></img></a></td>
 
-<!-- Модальное окно -->
+<!-- Модальное окно 1-->
  <a href="#x" class="overlay" id="win${count}"></a>
    <div class="popup">
    <p>Редактирование товара</p>
    <form action="../store">
-    <input type="hidden" name="action" value="edit">
-    <input type="text" name="M_Type" size="20" value="<c:out value="${good.getType()}"/>">
-    <input type="text" name="M_Name" size="20" value="<c:out value="${good.getNameProduct()}"/>">
-    <input type="text" name="M_Price" size="15" value="<c:out value="${good.getPrice()}"/>">
-    <input type="text" name="M_Code" size="10" value="<c:out value="${good.getCodeProduct()}"/>">
-    <input type="hidden" name="id" value="<c:out value="${good.getId()}"/>">
+    <input type="hidden" name="action" value="editUsers">
+    <input type="text" name="u_id" size="20" value="<c:out value="${users.getId()}"/>">
+    <input type="text" name="M_Name" size="20" value="<c:out value="${users.getLogin()}"/>">
+    <input type="text" name="M_Price" size="15" value="<c:out value="${users.getFirstName()}"/>">
+    <input type="text" name="M_Code" size="10" value="<c:out value="${users.getSurName()}"/>">
+    <input type="text" name="M_Code" size="10" value="<c:out value="${users.getEmail()}"/>">
+    <input type="text" name="M_Code" size="10" value="<c:out value="${users.getPassword()}"/>">
+    <input type="text" name="M_Code" size="10" value="<c:out value="${users.getRole()}"/>">
+    <input type="hidden" name="id" value="<c:out value="${users.getId()}"/>">
     <input id="Button1"  type="submit" method="get" style="position:relative;left:250px;" value="Сохранить">
+</form>
+
+    <a class="close"title="Закрыть" href="#close"></a>
+    </div>
+<!-- Модальное окно -->
+
+<!-- Модальное окно 2-->
+ <a href="#x" class="overlay" id="notRelised${count}"></a>
+   <div class="popup" style="max-width:150px;">
+   <p>Редактирование пользователей</p>
+   <form action="../store">
+    <h3>Извните. Функция по редактированию пользователей не заложена в бюджет проекта.</h3>
 </form>
 
     <a class="close"title="Закрыть" href="#close"></a>

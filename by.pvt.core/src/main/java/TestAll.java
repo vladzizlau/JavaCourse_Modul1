@@ -1,10 +1,12 @@
 import by.pvt.core.multi.config.ApplicationContext;
+import by.pvt.core.multi.domain.Order;
 import by.pvt.core.multi.domain.Product;
 import by.pvt.core.multi.domain.User;
+import by.pvt.core.multi.repository.OrderRepository;
+import by.pvt.core.multi.repository.ShopRepository;
 import by.pvt.core.multi.repository.UserRepository;
 import by.pvt.core.multi.repository.ProductRepository;
-import by.pvt.core.multi.service.ProductService;
-import by.pvt.core.multi.service.UserService;
+import by.pvt.core.multi.service.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,17 +17,17 @@ public class TestAll {
     public static void main(String[] args) throws IOException {
         UserRepository userRepository = ApplicationContext.getInstance().getUserRepository();
         ProductRepository productRepository = ApplicationContext.getInstance().getProductRepository();
-
-        ArrayList<User> users = new ArrayList<>();
+        OrderRepository orderRepository = new OrderRepository();
+//        ArrayList<User> users = new ArrayList<>();
         User user1 = new User(System.currentTimeMillis(), "FirstUser","qwe", "werq",  37529632, "wqe@tyty.ru",  "123", "Admin");
-        User user2 = new User(System.currentTimeMillis(), "SecondUser","zxc", "cvnm",324536563, "sobakanasene@sobaka.ru", "789", "Client");
-        User user3 = new User(System.currentTimeMillis(), "ThirdUSer","qer", "cbvc", 656565635, "zxc@ya.ru", "646", "Moderator");
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
+//        User user2 = new User(System.currentTimeMillis(), "SecondUser","zxc", "cvnm",324536563, "sobakanasene@sobaka.ru", "789", "Client");
+//        User user3 = new User(System.currentTimeMillis(), "ThirdUSer","qer", "cbvc", 656565635, "zxc@ya.ru", "646", "Moderator");
+//        users.add(user1);
+//        users.add(user2);
+//        users.add(user3);
 
 //        List<Product> prods = new ArrayList<>();
-//        Product prod1 = new Product(System.currentTimeMillis(),"Vegetables", "Cucumber", 100, 4.99);
+        Product prod1 = new Product(34123213,"Vegetables", "Cucumber", 100, 4.99);
 //        Product prod2 = new Product(System.currentTimeMillis(),"Vegetables", "Tomato", 130, 5.99);
 //        Product prod3 = new Product(System.currentTimeMillis(), "Fruits", "Apple (belarus)", 246, 1.99);
 //        Product prod4 = new Product(System.currentTimeMillis(), "Fruits", "Bananas", 589, 4.50);
@@ -50,6 +52,34 @@ public class TestAll {
 
         UserService userService = new UserService();
         ProductService productService = new ProductService();
+        ShopService shopService = new ShopService();
+        ArrayList<Order> o = new ArrayList<>();
+
+        Order ord1 = new Order(1, 34123213, 55, "All");
+        Order ord2 = new Order(2, 53455435, 25, "All");
+        Order ord3 = new Order(3, 56576574, 35, "All");
+        Order ord4 = new Order(4, 23657766, 45, "All");
+        Order ord5 = new Order(5, 76855466, 75, "All");
+        o.add(ord1);
+        o.add(ord2);
+        o.add(ord3);
+        o.add(ord4);
+        o.add(ord5);
+
+ //       orderRepository.addOrder(o);
+
+
+
+//        ArrayList<Order> or = orderRepository.getOrdersList();
+//        for (Order order : or) {
+//            System.out.println(order.getId());
+//        }
+        OrderService orderService = new OrderService();
+        orderService.getAllUserOrders(1);
+
+//    OrderRepository orderRepository1 = new OrderRepository();
+//    System.out.println(orderRepository1.getOrdersList().get(0).getId());
+
 //        Методы проверки ProductRepository
 
 //  productService.addProduct(prods); //Добавляет продукт в файл

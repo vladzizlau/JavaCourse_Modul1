@@ -1,17 +1,17 @@
 package by.pvt.core.multi.repository;
 
 import by.pvt.core.multi.domain.User;
+import by.pvt.core.multi.repository.Interface.IUsers;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Stream;
 
 public class UserRepository implements IUsers {
     public UserRepository() {
     }
 
     public String pathBase = "D:\\Project Java\\base.txt";
-    //public String pathBase = "D:\\Development Programs\\JavaProject\\base.txt";
+//    public String pathBase = "D:\\Development Programs\\JavaProject\\base.txt";
 
     // Добавляет и сохраняет пользователей в файл
     @Override

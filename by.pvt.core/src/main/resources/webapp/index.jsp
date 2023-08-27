@@ -22,7 +22,13 @@ document.getElementById("1234").click();
 <input type="submit" id="1234" hidden="hidden">
 </form>
 
-
+<c:set var="userId"><c:out value='${sessionScope["userAuth"].getId()}' /></c:set>
+ <c:if test="${userId != 0}">
+            <script>
+                  document.getElementById('Button2').text = "Кабинет";
+                  document.getElementById('Button2').href = "./client.jsp";
+              </script>
+        </c:if>
 <div id="container">
 <a id="Button1" href="./cart.html" style="position:absolute;left:900px;top:0px;width:100px;height:29px;z-index:0;">Корзина</a>
 <img src="images/img0002.png" id="Banner1" alt="Online Store" style="border-width:0;position:absolute;left:0px;top:33px;width:1000px;height:70px;z-index:1;" width="1000" height="70">

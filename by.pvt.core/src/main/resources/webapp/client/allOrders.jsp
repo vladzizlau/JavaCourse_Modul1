@@ -1,13 +1,14 @@
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<title>Admin</title>
+<title>История заказов</title>
 <link href="../OnlineStore.css" rel="stylesheet">
 <link href="../style/reg.css" rel="stylesheet">
 </head>
@@ -15,7 +16,7 @@
 <div id="container">
 <a id="Button1" href="../cart.jsp" style="position:absolute;left:900px;top:0px;width:100px;height:29px;z-index:0;">Корзина</a>
 <img src="../images/img0002.png" id="Banner1" alt="Online Store" style="border-width:0;position:absolute;left:0px;top:33px;width:1000px;height:70px;z-index:1;" width="1000" height="70">
-<a id="Button2" href="../login.jsp" style="position:absolute;left:788px;top:0px;width:100px;height:29px;z-index:2;">Вход</a>
+
 <nav id="wb_CssMenu2" style="position:absolute;left:0px;top:0px;width:336px;height:44px;z-index:3;">
 <ul id="CssMenu2" role="menubar" class="nav">
 <li role="menuitem" class="nav-item firstmain"><a class="nav-link" href="../index.jsp" target="_self" title="Товары">Гланая</a>
@@ -33,20 +34,27 @@
 <form name="Form1" method="post" action="./store" enc-type="application/x-www-form-urlencoded" id="Form1">
 <input type="hidden" name="link" value="Register.jsp">
 <div id="wb_Text6" style="position:absolute;left:180px;top:17px;width:200px;height:19px;z-index:5;">
-<span style="color:#000000;font-family:Arial;font-size:18px;">Удаление товаров</span></div>
-<a id="Button1" href="addprod.jsp" style="position:absolute;left:-150px;top:0px;width:120px;height:30px;">Добавить</a>
-<a id="Button1" href="editprod.jsp" style="position:absolute;left:-150px;top:50px;width:120px;height:30px;">Редактировать</a>
-<a id="Button1" href="deleteprod.jsp" style="position:absolute;left:-150px;top:100px;width:120px;height:30px;">Удалить</a>
-<a id="Button1" href="allusers.jsp" style="position:absolute;left:-150px;top:150px;width:120px;height:30px;">Пользователи</a>
+<span style="color:#000000;font-family:Arial;font-size:18px;">Мои заказы</span></div>
+<a id="Button1" href="../client.jsp" style="position:absolute;left:-150px;top:0px;width:120px;height:30px;">Кабинет</a>
 </form>
 
-<table id="Table" style="position: relative;border-spacing: 10px;left: 10px;top: 50px;width: 100px;height: 100px;border: 1px solid;" >
-<jsp:useBean id="service" class="by.pvt.core.multi.service.ProductService" scope="page"></jsp:useBean>
-<tr><th>Категория</th><th>Название</th><th>Цена</th><th>Код</th><th>ID</th>
-<c:forEach items="${service.loadProds()}" var="good">
-<div id="wb_Text2" >
 
-<tr><td><c:out value="${good.getType()}"/></td><td><c:out value="${good.getNameProduct()}"/></td><td><c:out value="${good.getPrice()}"/></td><td><c:out value="${good.getCodeProduct()}"/></td><td><c:out value="${good.getId()}"/></td><td><a href="../store?action=delete&id=<c:out value="${good.getId()}"/>" ><img style="height: 20px;" src="../images/delete.png"></img></a></td>
+<jsp:useBean id="dateValue" class="java.util.Date"/>
+
+
+
+<jsp:useBean id="order" class="by.pvt.core.multi.service.OrderService" scope="page"></jsp:useBean>
+<c:set var="userId"><c:out value='${sessionScope["userAuth"].getId()}' /></c:set>
+<table id="Table" style="position: relative;border-spacing: 10px;left: 10px;top: 50px;width: 100px;height: 100px;border: 1px solid;" >
+
+<tr><th>  </th><th>id пользователя</th><th>Стоимость</th><th>Статус</th>
+<c:forEach items="${order.getAllUserOrders(userId)}" var="good">
+<div id="wb_Text2" >
+<jsp:setProperty name="dateValue" property="time" value="${good.getId()}"/>
+
+
+
+<tr><td><fmt:formatDate value="${dateValue}" pattern="MM/dd/yyyy HH:mm"/></td><td><c:out value="${good.getUserId()}"/></td><td><c:out value="${good.getCost()}"/></td><td><c:out value="${good.getStatus()}"/></td></tr>
 
 </c:forEach>
 </table>

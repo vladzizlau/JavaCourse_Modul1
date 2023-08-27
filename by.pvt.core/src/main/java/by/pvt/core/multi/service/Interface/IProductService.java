@@ -1,7 +1,8 @@
-package by.pvt.core.multi.service;
+package by.pvt.core.multi.service.Interface;
 
 import by.pvt.core.multi.domain.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface IProductService
@@ -9,9 +10,9 @@ public interface IProductService
 
 
         // Добавление товара
-        void addProduct(List<Product> products);
+        void addProduct(ArrayList<Product> products);
 
-        public List<String> loadGroups();
+
         Product searchProduct(long code);
         Boolean searchCodeProduct(int code);
 

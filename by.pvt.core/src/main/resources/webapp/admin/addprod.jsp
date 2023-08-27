@@ -37,6 +37,7 @@
 <a id="Button1" href="addprod.jsp" style="position:absolute;left:-150px;top:0px;width:120px;height:30px;">Добавить</a>
 <a id="Button1" href="editprod.jsp" style="position:absolute;left:-150px;top:50px;width:120px;height:30px;">Редактировать</a>
 <a id="Button1" href="deleteprod.jsp" style="position:absolute;left:-150px;top:100px;width:120px;height:30px;">Удалить</a>
+<a id="Button1" href="allusers.jsp" style="position:absolute;left:-150px;top:150px;width:120px;height:30px;">Пользователи</a>
 </form>
 
 

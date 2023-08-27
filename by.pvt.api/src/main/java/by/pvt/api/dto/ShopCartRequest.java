@@ -1,31 +1,32 @@
-package by.pvt.core.multi.domain;
+package by.pvt.api.dto;
 
-import java.io.Serializable;
-
-//Корзина твоаров
-public class ShopCart implements Serializable {
+public class ShopCartRequest {
     private long id;
     private long productId;
     private long orderId;
+    private int count;
     private String nameProduct;
-    private int count; //количество товара
-    private double cost; //Будем считать стоимоть в одной корзине
+    private double cost;
 
-    public ShopCart(long id, String nameProd, long productId,int count, double cost, long orderId) {
+    public ShopCartRequest(long id, String nameProduct, long productId, long orderId, int count, double cost) {
         this.id = id;
-        this.nameProduct = nameProd;
+        this.nameProduct = nameProduct;
         this.productId = productId;
         this.orderId = orderId;
         this.count = count;
         this.cost = cost;
-
     }
 
-public ShopCart(){}
+    public ShopCartRequest() {
+    }
 
-    public String getNameProduct() { return nameProduct;}
+    public String getNameProduct() {
+        return nameProduct;
+    }
 
-    public void setNameProduct(String nameProduct) { this.nameProduct = nameProduct; }
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
 
     public long getId() {
         return id;
