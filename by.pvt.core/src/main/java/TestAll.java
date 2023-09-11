@@ -1,10 +1,9 @@
 import by.pvt.core.multi.config.ApplicationContext;
 import by.pvt.core.multi.domain.Order;
 import by.pvt.core.multi.domain.Product;
+import by.pvt.core.multi.domain.Status;
 import by.pvt.core.multi.domain.User;
-import by.pvt.core.multi.repository.OrderRepository;
-import by.pvt.core.multi.repository.UserRepository;
-import by.pvt.core.multi.repository.ProductRepository;
+import by.pvt.core.multi.repository.*;
 import by.pvt.core.multi.service.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,14 +11,14 @@ import java.util.List;
 
 public class TestAll {
     public static void main(String[] args) throws IOException {
-        UserRepository userRepository = ApplicationContext.getInstance().getUserRepository();
-        ProductRepository productRepository = ApplicationContext.getInstance().getProductRepository();
+//        UserRepository userRepository = ApplicationContext.getInstance().getUserRepository();
+//        ProductRepository productRepository = ApplicationContext.getInstance().getProductRepository();
         OrderRepository orderRepository = new OrderRepository();
-//        ArrayList<User> users = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
         User user1 = new User(System.currentTimeMillis(), "FirstUser","qwe", "werq",  37529632, "wqe@tyty.ru",  "123", "Admin");
-//        User user2 = new User(System.currentTimeMillis(), "SecondUser","zxc", "cvnm",324536563, "sobakanasene@sobaka.ru", "789", "Client");
+//        User user2 = new User(3L, "Vasya", "Case4kin", "vasya", 65645648L, "sabaka@ya.ru", "Street", "1", "Client");
 //        User user3 = new User(System.currentTimeMillis(), "ThirdUSer","qer", "cbvc", 656565635, "zxc@ya.ru", "646", "Moderator");
-//        users.add(user1);
+        users.add(user1);
 //        users.add(user2);
 //        users.add(user3);
 
@@ -34,6 +33,11 @@ public class TestAll {
 //            prods.add(prod3);
 //            prods.add(prod4);
 
+//        DBUserRepository userDB = new DBUserRepository();
+//        userDB.test();
+//        System.out.println(userDB.getAllUsers().size());
+//        userDB.addUser(users);
+
 
 
         //Методы проверки UserRepository
@@ -47,16 +51,16 @@ public class TestAll {
 //        System.out.println(userRepository.getUser("qwe", "12345").getFullName());
 //        System.out.println(userRepository.getUser("qwerty", "1111").getFullName());
 
-        UserService userService = new UserService();
+        UserService userService = ApplicationContext.getInstance().getUserService();
         ProductService productService = new ProductService();
         ShopService shopService = new ShopService();
         ArrayList<Order> o = new ArrayList<>();
 
-        Order ord1 = new Order(1, 34123213, 55, "All");
-        Order ord2 = new Order(2, 53455435, 25, "All");
-        Order ord3 = new Order(3, 56576574, 35, "All");
-        Order ord4 = new Order(4, 23657766, 45, "All");
-        Order ord5 = new Order(5, 76855466, 75, "All");
+        Order ord1 = new Order(1, 34123213, 55, Status.НЕ_СФОРМИРОВАН);
+        Order ord2 = new Order(2, 53455435, 25, Status.НЕ_СФОРМИРОВАН);
+        Order ord3 = new Order(3, 56576574, 35, Status.НЕ_СФОРМИРОВАН);
+        Order ord4 = new Order(4, 23657766, 45, Status.НЕ_СФОРМИРОВАН);
+        Order ord5 = new Order(5, 76855466, 75, Status.НЕ_СФОРМИРОВАН);
         o.add(ord1);
         o.add(ord2);
         o.add(ord3);
@@ -71,9 +75,17 @@ public class TestAll {
 //        for (Order order : or) {
 //            System.out.println(order.getId());
 //        }
-        OrderService orderService = new OrderService();
-        orderService.getAllUserOrders(1);
-
+//        OrderService orderService = new OrderService();
+//        orderService.getAllUserOrders(1);
+//        DBOrderRepository dbOrderRepository = new DBOrderRepository();
+//        System.out.println(dbOrderRepository.getAllUserOrders(32L));
+    ArrayList<User> add = new ArrayList<>();
+    add.add(user1);
+//        DBUserRepository dbUserRepository = new DBUserRepository();
+//        dbUserRepository.getUser("Admin");
+//        dbUserRepository.addUser(add);
+//        dbUserRepository.getAllUsers()
+//            dbUserRepository.deleteUser(user1);
 //    OrderRepository orderRepository1 = new OrderRepository();
 //    System.out.println(orderRepository1.getOrdersList().get(0).getId());
 

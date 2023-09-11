@@ -1,7 +1,8 @@
-package by.pvt.core.multi.controller.admin;
+package by.pvt.core.multi.controller;
 
 import by.pvt.core.multi.config.ApplicationContext;
 import by.pvt.core.multi.domain.Product;
+import by.pvt.core.multi.domain.User;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,7 +28,7 @@ public class AdminController extends HttpServlet {
     public void doEditProd(HttpServletRequest req, HttpServletResponse resp)
     {
 
-        Product prodnew = ApplicationContext.getInstance().getProductService().searchProduct(Long.parseLong(req.getParameter("id")));
+        Product prodnew = ApplicationContext.getInstance().getProductService().searchIDProduct(Long.parseLong(req.getParameter("id")));
         String name = req.getParameter("M_Name");
         int code = Integer.parseInt(req.getParameter("M_Code"));
         String type = req.getParameter("M_Type");
@@ -39,7 +40,13 @@ public class AdminController extends HttpServlet {
 
     public void doDel(HttpServletRequest req, HttpServletResponse resp)        {
         System.out.println(req.getParameter("id"));
-        Product prodnew = ApplicationContext.getInstance().getProductService().searchProduct(Long.parseLong(req.getParameter("id")));
+        Product prodnew = ApplicationContext.getInstance().getProductService().searchIDProduct(Long.parseLong(req.getParameter("id")));
         ApplicationContext.getInstance().getProductService().deleteProduct(prodnew);
+    }
+public void deleteUser(HttpServletRequest req, HttpServletResponse resp)
+    {
+    System.out.println(req.getParameter("login"));
+    User userNew = ApplicationContext.getInstance().getUserService().getUser(req.getParameter("login"));
+    ApplicationContext.getInstance().getUserService().deleteUser(userNew);
     }
 }

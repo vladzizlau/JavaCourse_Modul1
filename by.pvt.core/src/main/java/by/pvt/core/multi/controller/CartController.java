@@ -1,8 +1,9 @@
-package by.pvt.core.multi.controller.shop;
+package by.pvt.core.multi.controller;
 
 import by.pvt.api.dto.ShopCartRequest;
 import by.pvt.api.dto.UserResponse;
 import by.pvt.core.multi.config.ApplicationContext;
+import by.pvt.core.multi.domain.Status;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -36,7 +37,7 @@ public class CartController extends HttpServlet
         UserResponse userResponse = (UserResponse) httpSession.getAttribute("userAuth");
         long userid = userResponse.getId();
         String status = "Оплачено";
-        ApplicationContext.getInstance().getOrderService().editOrder(userid, status);
+        ApplicationContext.getInstance().getOrderService().editOrderStatus(userid, Status.ОПЛАЧЕН);
     }
 
 

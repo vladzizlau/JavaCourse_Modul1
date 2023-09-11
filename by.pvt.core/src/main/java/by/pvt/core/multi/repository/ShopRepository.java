@@ -13,26 +13,20 @@ public class ShopRepository implements IShop {
     // Сохраняет товар в файл
     @Override
     public void addOrder(ShopCart shopCart) {
-        saveToFile(shopCart);
-        // Здесь место под функцию сохранения ордера в базу данных
-    }
-
-    @Override
-    public void saveToFile(ShopCart shopCart) //сохранение в файл
-    {
-        ArrayList<ShopCart> newlist = getCartList();
-        newlist.add(shopCart);
+        ArrayList<ShopCart> newList = getCartList();
+        newList.add(shopCart);
 
         try {
             FileOutputStream FOS = new FileOutputStream(pathBase);
             ObjectOutputStream OOS = new ObjectOutputStream(FOS);
-            OOS.writeObject(newlist);
+            OOS.writeObject(newList);
             OOS.close();
             FOS.close();
         } catch (Throwable e) {
             System.out.println("addShopCart: " + e.getMessage());
         }
     }
+
     @Override
     public ArrayList<ShopCart> getCartList() {
         ArrayList<ShopCart> shopC = new ArrayList<>();

@@ -7,11 +7,11 @@ public class Order implements Serializable {
    private long id;
    private long userId;
    private double cost; // общая стоимость
-   private String status ;//  НЕ_СФОРМИРОВАН, ОЖИДАЕТ_КУРЬЕРА, В_ПУТИ, ВЫПОЛНЕН
+   private Status status ;//
 
 
 
-   public Order(long id, long userId, double cost, String status) {
+   public Order(long id, long userId, double cost, Status status) {
       this.id = id;
       this.userId = userId;
       this.cost = cost;
@@ -47,10 +47,10 @@ public class Order implements Serializable {
    }
 
    public String getStatus() {
-      return status;
+      return status.toString();
    }
 
-   public void setStatus(String status) {
+   public void setStatus(Status status) {
       this.status = status;
    }
 }

@@ -7,17 +7,12 @@ import java.util.ArrayList;
 
 public interface IProductService
     {
-
-
-        // Добавление товара
         void addProduct(ArrayList<Product> products);
+        Product searchCodeProduct(long code);
 
+    //Поиск товара по Code с возвратом объекта
+    Product searchIDProduct(long id);
 
-        Product searchProduct(long code);
-        Boolean searchCodeProduct(int code);
-
-        //Редактирование товара
-        void editProduct(Product products, String name, int code, String type, double price);
-
+    void editProduct(Product products, String name, int code, String type, double price);
         void deleteProduct(Product product);
     }

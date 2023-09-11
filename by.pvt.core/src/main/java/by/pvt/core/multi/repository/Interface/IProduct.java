@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 public interface IProduct {
 
-     // Сохраняет товар в файл
      void addProd(ArrayList<Product> products);
-
      ArrayList<Product> getAllProduct();
 
+void editProduct(Product product);
 
+Product searchForCodeProduct(long code);
+    Product searchForIDProduct(long id);
+    void deleteProduct(Product product);
 }

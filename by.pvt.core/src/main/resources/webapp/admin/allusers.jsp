@@ -214,8 +214,7 @@ margin-bottom: 10px;
 </li>
 </ul>
 </nav>
-<div id="wb_Text1" style="position:absolute;left:315px;top:530px;width:500px;height:15px;z-index:4;">
-<span style="color:#000000;font-family:Arial;font-size:16px;">Site created special for Java course Enterprise Edition</span></div>
+
 
 <div id="wb_Form1" style="position:absolute;left:269px;top:112px;width:462px;height:399px;z-index:20;">
 <form name="Form1" method="post" action="./store" enc-type="application/x-www-form-urlencoded" id="Form1">
@@ -235,7 +234,7 @@ margin-bottom: 10px;
 <c:forEach items="${service.getAllUsers()}" var="users">
 <div id="wb_Text2" >
 
-<tr><td><c:out value="${users.getId()}"/></td><td><c:out value="${users.getLogin()}"/></td><td><c:out value="${users.getFirstName()}"/></td><td><c:out value="${users.getSurName()}"/></td><td><c:out value="${users.getEmail()}"/></td><td><c:out value="${users.getPassword()}"/></td><td><c:out value="${users.getRole()}"/></td><td><a href="#notRelised${count}" id="<c:out value="${good.getId()}"/>"><img style="height: 20px;" src="../images/editImage.png"></img></a></td>
+<tr><td><c:out value="${users.getId()}"/></td><td><c:out value="${users.getLogin()}"/></td><td><c:out value="${users.getFirstName()}"/></td><td><c:out value="${users.getSurName()}"/></td><td><c:out value="${users.getEmail()}"/></td><td><c:out value="${users.getPassword()}"/></td><td><c:out value="${users.getRole()}"/></td><td><a href="../store?action=deleteUser&login=<c:out value="${users.getLogin()}"/>"><img style="height: 20px;" src="../images/delete.png"></img></a></td>
 
 <!-- Модальное окно 1-->
  <a href="#x" class="overlay" id="win${count}"></a>
@@ -263,7 +262,7 @@ margin-bottom: 10px;
    <div class="popup" style="max-width:150px;">
    <p>Редактирование пользователей</p>
    <form action="../store">
-    <h3>Извните. Функция по редактированию пользователей не заложена в бюджет проекта.</h3>
+    <h3>Извините. Функция по редактированию пользователей не заложена в бюджет проекта.</h3>
 </form>
 
     <a class="close"title="Закрыть" href="#close"></a>

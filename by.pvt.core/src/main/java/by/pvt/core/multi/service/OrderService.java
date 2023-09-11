@@ -2,6 +2,9 @@ package by.pvt.core.multi.service;
 
 import by.pvt.core.multi.config.ApplicationContext;
 import by.pvt.core.multi.domain.Order;
+import by.pvt.core.multi.domain.Status;
+import by.pvt.core.multi.repository.DBOrderRepository;
+import by.pvt.core.multi.repository.OrderRepository;
 import by.pvt.core.multi.service.Interface.IOrderService;
 
 
@@ -9,69 +12,49 @@ import java.util.ArrayList;
 
 public class OrderService implements IOrderService {
     // id, userId, cost, status=НЕ_СФОРМИРОВАН
+    private final DBOrderRepository orderRepository;
+
+    public OrderService() {
+        orderRepository = new DBOrderRepository();
+    }
 
     @Override
     public long order(long userId) //Входная функция по получению id ордера
     {
-        long orderid = searchCurrentOrder(userId);
-        if (orderid == 0) {
-            orderid = createOrder(userId);
-        } else if (orderid != 0) {
-            return orderid;
+        Order order = searchCurrentOrder(userId);
+        Order newOrder = null;
+        if (order  == null) {
+            newOrder = createOrder(userId);
+            return newOrder.getId();
+        } else if (order != null) {
+            return order.getId();
         }
-        return orderid;
+        return order.getId();
     }
 
     @Override
-    public long createOrder(long userId) { //создадим новый ордер и вернем его id
+    public Order createOrder(long userId) { //создадим новый ордер и вернем его в работу
         long thisOrderId = System.currentTimeMillis();
-        Order ord = new Order(thisOrderId, userId, 0, "НЕ_СФОРМИРОВАН");
-        ApplicationContext.getInstance().getOrderRepository().addOrder(ord);
-        return thisOrderId;
+        Order order = new Order(thisOrderId, userId, 0, Status.НЕ_СФОРМИРОВАН);
+        return orderRepository.addOrder(order);
     }
     @Override
-    public void editOrder(long userID, String status){ //Присвоение статуса оплачен
-        long orderid = searchCurrentOrder(userID);
-        double cost = ApplicationContext.getInstance().getCartService().finalCost(orderid);
-        ArrayList<Order> allorders = getAllOrder();
-        int index = 0;
-        Order order = new Order();
-        for(int i = 0; i < allorders.size();)
-        {
-                if(allorders.get(i).getId() == orderid)
-                {
-                    index = i;
-                    break;
-                }
-            i++;
-        }
-//        int index = allorders.indexOf(order);
-        allorders.get(index).setStatus(status);
-        allorders.get(index).setCost(cost);
-        ApplicationContext.getInstance().getOrderRepository().saveToFile(allorders);
+    public void editOrderStatus(long userID, Status status){ //Изменение статуса
+        Order order = orderRepository.searchCurrentOrder(userID);
+        double cost = ApplicationContext.getInstance().getCartService().finalCost(order.getId());
+        orderRepository.editStatusOrder(order, status, cost);
     }
     @Override
-    public long searchCurrentOrder(long userID) { //Получим ордер со статусом НЕ_СФОРМИРОВАН"
-        for (Order order : getAllUserOrders(userID)) {
-            if (order.getStatus().equals("НЕ_СФОРМИРОВАН")) {
-                return order.getId();
-            }
-        }
-        return -1;
+    public Order searchCurrentOrder(long userID) { //Получим ордер со статусом НЕ_СФОРМИРОВАН"
+                return orderRepository.searchCurrentOrder(userID);
     }
     @Override
     public ArrayList<Order> getAllUserOrders(long userId) { //Получет все ордеры пользователя
-        ArrayList<Order> allOrders = new ArrayList<>();
-        for (Order order : getAllOrder()) {
-            if (order.getUserId() == userId) {
-                allOrders.add(order);
-            }
-        }
-        return allOrders;
+        return orderRepository.getAllUserOrders(userId);
     }
 
     @Override
     public ArrayList<Order> getAllOrder() {
-        return ApplicationContext.getInstance().getOrderRepository().getOrdersList();
+        return orderRepository.getOrdersList();
     }
 }

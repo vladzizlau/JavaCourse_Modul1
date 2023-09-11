@@ -29,6 +29,10 @@ public class Controller extends HttpServlet
                 ApplicationContext.getInstance().getAdminController().doDel(req, resp);
                 resp.sendRedirect("./admin/deleteprod.jsp");
                 break;
+            case "deleteUser":
+                ApplicationContext.getInstance().getAdminController().deleteUser(req, resp);
+                resp.sendRedirect("./admin/allusers.jsp");
+                break;
                 case "cart":
                     ApplicationContext.getInstance().getCartController().toCart(req, resp);
                    resp.sendRedirect("./index.jsp");

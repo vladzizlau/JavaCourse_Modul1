@@ -11,7 +11,7 @@ public class ShopCart implements Serializable {
     private int count; //количество товара
     private double cost; //Будем считать стоимоть в одной корзине
 
-    public ShopCart(long id, String nameProd, long productId,int count, double cost, long orderId) {
+    public ShopCart(long id, String nameProd, long productId, int count, double cost, long orderId) {
         this.id = id;
         this.nameProduct = nameProd;
         this.productId = productId;

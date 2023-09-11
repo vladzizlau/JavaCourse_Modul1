@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SessionFilter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws ServletException, IOException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpSession httpSession = httpServletRequest.getSession(false);
         String page = ((HttpServletRequest) servletRequest).getRequestURI();
@@ -19,24 +19,18 @@ public class SessionFilter implements Filter {
             System.out.println(userResponse.getRole());
             System.out.println(page);
             if (httpSession == null && httpSession.getAttribute("userAuth") == null) {
-                if (page.equalsIgnoreCase("/admin/") || page.equalsIgnoreCase("/admin/admin.jsp") || page.equalsIgnoreCase("/admin/addprod.jsp") || page.equalsIgnoreCase("/admin/deleteprod.jsp") || page.equalsIgnoreCase("/admin/editprod.jsp")) {
                     servletRequest.getRequestDispatcher("/bad2.jsp").forward(servletRequest, servletResponse);
-                } else if (page.equalsIgnoreCase("/core/client.jsp")) {
-                    servletRequest.getRequestDispatcher("/error.jsp").forward(servletRequest, servletResponse);
-                }
-
             } else {
                 filterChain.doFilter(servletRequest, servletResponse);
-
             }
         }
-        catch (NullPointerException e)
+        catch (Exception e)
         {
             servletRequest.getRequestDispatcher("/error.jsp").forward(servletRequest, servletResponse);
         }
 
-
-
     }
+
+
 
 }

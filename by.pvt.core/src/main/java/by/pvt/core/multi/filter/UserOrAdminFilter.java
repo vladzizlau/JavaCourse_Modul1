@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-public class userOrAdminFilter implements Filter {
+public class UserOrAdminFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;

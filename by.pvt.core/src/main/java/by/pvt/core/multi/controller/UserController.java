@@ -1,4 +1,4 @@
-package by.pvt.core.multi.controller.user;
+package by.pvt.core.multi.controller;
 
 import by.pvt.api.dto.UserRequest;
 import by.pvt.api.dto.UserResponse;
@@ -17,6 +17,7 @@ public class UserController extends HttpServlet {
         // --- Проверка на логин для первоначальной регистрации админа. Если логин Admin, то роль у него будет Admin.
         String role = "";
         String login = req.getParameter("LoginLabel");
+        boolean regOrNo;
         if (login.equals("Admin"))
         {
             role = "Admin";
@@ -37,24 +38,27 @@ public class UserController extends HttpServlet {
                     Long.parseLong(req.getParameter("phonelabel")),
                     role);
 
-
             if (userRequest.getLogin() != null && userRequest.getFirstName() != null && userRequest.getSurName() != null && userRequest.getPassword() != null && userRequest.getEmail() != null)
             {
-                ApplicationContext.getInstance().getUserService().register(userRequest);
+               regOrNo = ApplicationContext.getInstance().getUserService().register(userRequest);
                 //Session create
                 HttpSession httpSession = ((HttpServletRequest) req).getSession(false);
                 UserResponse userResponse = (UserResponse) httpSession.getAttribute("userAuth");
 
-                if(userResponse.getRole().equals("Admin"))
+                 if(role.equals("Admin") && regOrNo)
                 {
-                    req.getRequestDispatcher("/admin.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
                     httpSession.setAttribute("userAuth", userResponse);
                 }
-                else if (userResponse.getRole().equals("Client"))
+                else if (role.equals("Client") && regOrNo)
                 {
-                    req.getRequestDispatcher("/client.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
                     httpSession.setAttribute("userAuth", userResponse);
                 }
+                 else if (regOrNo == false)
+                     {
+                     req.getRequestDispatcher("/errors/register.jsp").forward(req, resp);
+                     }
             }
             else
             {
